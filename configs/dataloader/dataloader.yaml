@@ -1,0 +1,45 @@
+dataset_type: CustomDataset
+# load_breast_cancer, load_digits, load_boston, load_iris, load_diabetes, load_wine
+# Dataset which are from classification set (folder) have to be written in next form: name + /, Ex: breast-cancer-wisc/
+dataset_name: phishing_website  #_AdultMine # SUSY-small # molec-biol-splice # wine-quality-white # optical_train # pendigits_train  #plant-texture SUSY, cora
+#phishing_website
+# Train/val parameters split
+val_size: 0.3
+
+data_seed: 1
+min_sample_predictions: 5 # 1 when using NN module
+experiment_name: 'no_exp'
+
+# Dataloader parameters 
+num_workers: 1                  # Keep 1 for now, weird behaviour 
+
+
+# --- Dataloader ---
+train_graph_size: 300
+train_n_batches: None         # Equal to: dataset_size/train_graph_size
+
+# --- Validation/Test ---
+val_graph_size: 300
+val_seed: 0                   # SEED the validation missigness 
+
+fly_corrupt: 0.2
+
+
+# Imputation parameters
+# Move it into separate file
+miss_algo: MCAR
+imputation:
+  init_corrupt: 0.2
+  fill_val: -999            # FIX THIS VALUES, NEVER CHANGE
+  seed: 100                 # This seed controls the noise which is introduced initially into dataset
+  cat_emb_dim: 8
+  scale_type: StandardScaler 
+  # Estimated from dataset
+  num_idx: {}
+  cat_idx: {}
+  cat_dims: {}
+  CatFillWith: {}
+  MostFreqClass: {}
+
+
+

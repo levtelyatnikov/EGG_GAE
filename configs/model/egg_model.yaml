@@ -1,0 +1,61 @@
+# FIXED PARAMETERS TO COINSIDE WITH THE NAME
+type: EGnet                           # NNnet
+edge_generation_type: EGG_module #EGG_module     # DynamicEdgeConv_DGM, NN_module, EGG_module
+
+
+# VARIABLE PARAMETERS
+input_bn: True                        # True/False
+secondGCN: False  # True/False
+prototypes:
+  k: 0
+
+setup_dataset: True
+GCNEG_head:
+  types: [GCNConv] # GCNConv, EdgeConv, ARMAConv, SGConv  
+
+GumbleDistFunc:
+  types: [L2_dist] # cos_dist, L2_dist, Trainable_dist, AMR, Trainable_cosine, Trainable_Q, cos_dist, Trainable_cosine AdditiveAttention
+
+GCNEG_mapper:
+  types: [SimpleMapper] # LinearMapper, SimpleMapper, DeepMapper, UniformEdges
+
+SamplingProcedure:
+  types:  [GumbelSigmoid] # GumbelSigmoid_k
+
+k_degree: [5] # Use selfloop string to get selfloop
+
+
+# Model parameters
+in_channels: [300]    # Note that in_channels[i] == out_channels[i-1]  + in EGformerModule all module shapes have to be equal for now...
+edge_out_feat: [300]
+
+insize: None
+outsize: None
+
+reg_type: A_hat*mask # [A_hat*mask, paper, A-mask]
+prob_reg: 0.005
+#-------------------------#
+initACT: RELU # ['RELU', 'ELU', 'LeakyReLU']
+initNORM: BN # [BN, LN, 'None'] 
+
+drop_prob: 0.1 
+mapperDP: 0.1 
+
+
+
+# Optimizer parameters
+opt: 
+  lr: 0.0001 
+  warmup_steps_pct: 0.1
+  decay_steps_pct: 0.9
+  weight_decay: 0.001
+  max_epochs: 150
+  scheduler_gamma: 0.5
+  loader_batches: None
+  optimizer: RMSPROP 
+  momentum: 0.9
+
+
+
+
+
