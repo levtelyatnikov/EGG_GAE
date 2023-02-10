@@ -1,5 +1,10 @@
 <<<<<<< HEAD
-# EGG-GAE: scalable graph neural networks for tabular data imputation [link] (https://arxiv.org/abs/2210.10446)
+# EdGe Generation-Graph AutoEncoder (EGG-GAE)
+
+---
+
+EGG-GAE: scalable graph neural networks for tabular data imputation[link] (https://arxiv.org/abs/2210.10446)
+
 This repository provides the base code for pytorch-lightning and weight and biases simultaneous integration + hydra (to keep configs clean).
 This repository shows a **Toy configuration of CV classificator**
 
