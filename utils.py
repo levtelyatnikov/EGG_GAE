@@ -3,7 +3,7 @@ import numpy as np
 import torch
 from omegaconf import DictConfig
 
-from egg.dataloader import PL_DataModule
+from dataloader import PL_DataModule
 
 def get_dataloader(cfg: DictConfig, data=None):
     return PL_DataModule(cfg.dataloader, model_type=cfg.model.edge_generation_type, data=data)

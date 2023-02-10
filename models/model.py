@@ -7,10 +7,10 @@ import numpy as np
 from .networks.EGnet import EGnet
 from .networks.NNnet import NNnet
 
-from egg.models.edge_generation.EGmodule import EdgeGenerationModule
+from models.edge_generation.EGmodule import EdgeGenerationModule
 
-from egg.utils import ModelTraverse 
-from egg.metrics.metrics import MetricCalculator
+from utils import ModelTraverse 
+from metrics.metrics import MetricCalculator
 
 
 class Network(nn.Module):

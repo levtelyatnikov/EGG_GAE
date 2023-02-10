@@ -2,9 +2,9 @@ import torch
 from pytorch_lightning import Callback
 from collections import defaultdict
 import numpy as np
-from egg.utils import torch2numpy
-from egg.inference.ensembler import Ensemble
-from egg.inference.utils import cat_dicts
+from utils import torch2numpy
+from inference.ensembler import Ensemble
+from inference.utils import cat_dicts
 
 
 

@@ -2,8 +2,7 @@
 import torch
 import numpy as np
 from torch_geometric.data import Data
-import numpy as np
-import random 
+import numpy as np 
 from omegaconf.dictconfig import DictConfig
 from torch_geometric.data import Dataset
 from abc import abstractmethod
@@ -376,87 +375,3 @@ class TestImputeDataset(ImputationBase):
         return self.batch_to_dense(X, mask_init)
  
 
-
-
-# class ValImputeDataset(ImputationBase):
-#     def get(self, idx):
-#         """
-#         idx: batch index
-#         """
-    
-#         torch.manual_seed(int(idx * self.cfg.val_seed))
-#         np.random.seed(int(idx * self.cfg.val_seed))
-#         random.seed(int(idx * self.cfg.val_seed))
-        
-#         idxs = self.stable_idx[idx]  
-#         #
-        
-#         features_clean, features_val_mcar,\
-#         _, label,\
-#         _, mask_arti = self.extract_batch(idxs, mode="val")
-        
-#         # x - features that has been corrupted artificially and initially
-#         # x_init - fully clean features
-#         # x_clean_deg - features which were corrupted only initially
-#         data = Data(x=features_val_mcar, mask=mask_arti,
-#                     x_clean = features_clean,
-#                     y=torch.tensor(label).type(torch.int64),    
-#                     num_idx=self.num_idx, cat_idx=self.cat_idx,
-#                     cat_dims=self.cat_dims, NumFillWith=self.NumFillWith,
-#                     CatFillWith=self.CatFillWith, 
-#                     MostFreqClass=self.MostFreqClass,
-#                     unique_idx = torch.tensor(idxs).type(torch.int64), idx=idx,
-#                     mode=torch.tensor([0]).type(torch.int64))
-
-        
-      
-#         return data
-        
-#     def prepare_validation_MCAR_once(self, ):
-#         torch.manual_seed(int(self.cfg.val_seed))
-#         np.random.seed(int(self.cfg.val_seed))
-#         random.seed(int(self.cfg.val_seed))
-        
-#         # We have to degrage the whole val dataset once and keep it
-#         self.features_mcar, self.MASK_val = self.data_val_preprocessing(
-#                                                 self.features,
-#                                                 self.MASK_init
-#                                                 )
-        
-#     def batch_preprocessing(self,  X, mask_init):
-#         return self.batch_to_dense(X, mask_init)
-        
-#     def data_val_preprocessing(self, X, mask_init):
-        
-#         """
-#         Inputs:
-#             dataset to corrupt
-#             % of data to eliminate[0,1]
-#             rand random state
-#             replace with = 'zero' or 'nan'
-#         Outputs:
-#             corrupted Dataset 
-#             binary mask
-#         """
-#         X_1d = X.flatten()
-#         mask_1d = torch.ones(X_1d.shape[0])#torch.ones(self.graph_size*self.dataset_init_dim)
-
-#         if self.corrupt_size==0:
-#             # Base case (not corrupt dataset)
-#             return X, mask_1d.reshape(X.shape)
-
-#         # Take only not test indices i.e. indices with 0 in mask_init
-#         available_idx = (mask_init.flatten() == 1).nonzero(as_tuple=True)[0] # self.batch_flatten_idx[mask_init.flatten() == 1]
-        
-#         # Randomly select indices to corrupt
-#         p = torch.ones(available_idx.shape)
-#         p = p / p.sum()
-#         temp_idx = torch.multinomial(p, num_samples=self.corrupt_size, replacement=False)
-#         corrupt_idx = available_idx[temp_idx].type(torch.int64)
-        
-#         X_1d[corrupt_idx] = self.cfg.imputation.fill_val
-#         mask_1d[corrupt_idx] = 0
-        
-#         X_deg = X_1d.reshape(X.shape)
-#         mask_arti = mask_1d.reshape(X.shape) 
-#         return X_deg, mask_arti

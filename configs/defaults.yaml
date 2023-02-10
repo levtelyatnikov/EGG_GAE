@@ -1,28 +1,21 @@
 defaults:
   - _self_
   - dataloader: dataloader
-  - model: gcneg_model           
-#  - exp_defaults: ${dataloader}
+  - model: kegg_model    # Options: egg_model, kegg_model       
 
 trainer:
   cuda_number: '0'
   gpus: 1
-  is_logger_enabled: true
+  is_logger_enabled: false
   check_val_every_n_epoch: 30
   log_every_n_steps: 25         
   make_checkpoint: True
   checkpoint_path: {}
   
-
-# Projects name
-# imput_baseline - where the runs of imputation baseline
-# optimization - where the runs of different opimizers to find the one which converges
 wadb:
-  logger_project_name: new_data_pipeline #imput_baseline #imput_baseline #optimization
-  logger_name: clean_check
-  entity: edge_generation
-  
-
+  logger_project_name: project_name
+  logger_name: logger_name
+  entity: entity_name
 
 seed_everything: 42
 

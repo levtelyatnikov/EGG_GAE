@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from egg.metrics.metrics import MetricCalculator 
+from metrics.metrics import MetricCalculator 
 
 
 class Ensemble():
