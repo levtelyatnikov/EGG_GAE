@@ -216,13 +216,6 @@ def preprocess_data(X, y, cat_cols,
     # X_test for final validation. X_test can 
     # be corrupted with MCAR, MAR or MNAR missingness.
 
-
-    # X_deg_test, X_deg_test_freq = X_deg_val.copy(), X_deg_val_freq.copy()
-    # X_test_clean = X_val_clean.copy()
-    # X_test_clean = X_val_clean.copy()
-    # y_test = y_val.copy()
-    # mask_test = mask_val.copy()
-
     # Val set:
     # by default we always assume the validation missingness
     # mechanism is being MCAR. Hence the models

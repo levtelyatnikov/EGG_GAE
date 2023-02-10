@@ -3,7 +3,6 @@ import torch
 from torch import Tensor
 from .bernulyEG import GumbelSigmoid, GumbelSigmoid_k
 
-import numpy as np
 
 class EdgeGenerationModule(nn.Module):
     def __init__(self, **args):

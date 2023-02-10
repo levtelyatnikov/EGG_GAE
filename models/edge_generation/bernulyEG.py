@@ -5,9 +5,7 @@ class EdgeSampling(torch.nn.Module):
     def __init__(self, **args):
         super(EdgeSampling, self).__init__()
         GumbleDistFunc = {
-                        "L2_dist": L2_dist,
-                        "cos_dist": cos_dist
-                        }
+                        "L2_dist": L2_dist,}
         
         self.cfg = args['cfg'] # """Gets cfg.model"""
         self.dist = GumbleDistFunc.get(args['GumbleDistFunc_type'])(**args) 
