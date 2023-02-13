@@ -19,10 +19,8 @@ lib64/
 parts/
 sdist/
 var/
-<<<<<<< HEAD
 outputs/
-=======
->>>>>>> 02870f148f8abf7c90f23a1b1e153a9f9a942101
+noised_datasets/
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
