@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 # EdGe Generation-Graph AutoEncoder (EGG-GAE)
 
 ---
 
 EGG-GAE: scalable graph neural networks for tabular data imputation[link] (https://arxiv.org/abs/2210.10446)
-
-This repository provides the base code for pytorch-lightning and weight and biases simultaneous integration + hydra (to keep configs clean).
-This repository shows a **Toy configuration of CV classificator**
 
 **pytorch-lightning-wadb-code-backbone organization** 
 
@@ -16,13 +12,31 @@ This repository shows a **Toy configuration of CV classificator**
 │   method.py
 |   dataloader.py
 |   train.py
+|   utils.py
 |
 └───models
+│   │   modules 
+│   │   networks
+│   │   edge_generation
 │   │   model.py
 |
 └───datasets
 │   │   dataset.py
-│   │   transformfactory.py
+│   │   upload_data.py
+|
+└───data_prep
+│   │   save.py
+│   │   upload.py
+│   │   pipeline.py
+│   │   preprocesing.py
+│   │   utils.py
+│   │   miss_utils.py
+|
+└───inference
+│   │   ensembler.py
+│   │   val_logic.py
+│   │   test_logic.py
+│   │   utils.py
 |
 └───configs
 │   │   defaults.yaml
@@ -30,7 +44,8 @@ This repository shows a **Toy configuration of CV classificator**
 │   │    │  dataset.yaml
 │   │
 │   └─── model
-│   │    │  model.yaml
+│   │    │  egg_model.yaml
+│   │    │  kegg_model.yaml
 ```
 
 ### Code structure ###
