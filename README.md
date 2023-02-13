@@ -33,12 +33,20 @@ pip install scipy
 pip install matplotlib
 ```
 
+
 ## Run an experiment
 The code is designed to be executed on a single GPU and the GPU must be indicated through the CLI:
 
 ```
 CUDA_VISIBLE_DEVICES=<GPU_ID> python run.py
 ```
+
+## Adding Tabular Dataset
+
+To add a tabular dataset, modify `data_prep/upload.py` and update the `loader` function. 
+The output of the `loader` function is:
+- `X`: observation features
+- `y`: observation labels 
 
 ## Logger
 Login to your `wandb` account, running once `wandb login`.
