@@ -3,9 +3,11 @@
 ---
 
 EGG-GAE: scalable graph neural networks for tabular data imputation[link] (https://arxiv.org/abs/2210.10446)
+# Navigation
+- [Navigation](#navigation)
+    - [Repository structure](#repository_structure)
 
-**pytorch-lightning-wadb-code-backbone organization** 
-
+## Repository structure
 ```
 
 │   README.md
