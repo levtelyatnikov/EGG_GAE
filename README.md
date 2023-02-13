@@ -4,8 +4,7 @@
 
 EGG-GAE: scalable graph neural networks for tabular data imputation[link] (https://arxiv.org/abs/2210.10446)
 # Navigation
-- [Navigation](#navigation)
-    - [Repository structure](#repository_structure)
+- [Repository structure](#repository_structure)
 
 ## Repository structure
 ```
@@ -16,10 +15,25 @@ EGG-GAE: scalable graph neural networks for tabular data imputation[link] (https
 |   train.py
 |   utils.py
 |
+└───configs
+│   │   defaults.yaml
+│   └─── dataloader
+│   │    │  dataset.yaml
+│   │
+│   └─── model
+│   │    │  egg_model.yaml
+│   │    │  kegg_model.yaml
+|
 └───models
 │   │   modules 
+│   │   │   egg.py
+│   │   │   mappers.py
 │   │   networks
+│   │   │   EGnet.py
 │   │   edge_generation
+│   │   │   EGmodule.py
+│   │   │   distances.py
+│   │   │   sampler.py
 │   │   model.py
 |
 └───datasets
@@ -40,14 +54,7 @@ EGG-GAE: scalable graph neural networks for tabular data imputation[link] (https
 │   │   test_logic.py
 │   │   utils.py
 |
-└───configs
-│   │   defaults.yaml
-│   └─── dataloader
-│   │    │  dataset.yaml
-│   │
-│   └─── model
-│   │    │  egg_model.yaml
-│   │    │  kegg_model.yaml
+
 ```
 
 ### Code structure ###
