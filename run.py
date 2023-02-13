@@ -108,8 +108,6 @@ def main(cfg: DictConfig):
     
     trainer.test(model=model, test_dataloaders=datamodule.test_dataloader(), ckpt_path="best")
     
-    #trainer.test(model=model, test_dataloaders=datamodule.test_dataloader(), ckpt_path="best")
-    
     print('Training is done!')
     
 

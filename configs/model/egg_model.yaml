@@ -49,7 +49,7 @@ opt:
   warmup_steps_pct: 0.1
   decay_steps_pct: 0.9
   weight_decay: 0.001
-  max_epochs: 150
+  max_epochs: 10
   scheduler_gamma: 0.5
   loader_batches: None
   optimizer: RMSPROP 

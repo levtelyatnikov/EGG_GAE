@@ -5,7 +5,7 @@ from omegaconf import DictConfig
 import numpy as np
 
 from .networks.EGnet import EGnet
-from .networks.NNnet import NNnet
+
 
 from models.edge_generation.EGmodule import EdgeGenerationModule
 
@@ -24,13 +24,11 @@ class Network(nn.Module):
         self.cfg, self.args = cfg.model, args #"passes cfg.model"
         self.cfgDataloader = cfg.dataloader 
         self.cfgTrainer = cfg.trainer
-        networks = {'EGnet':EGnet,
-                    'NNnet': NNnet}
+        networks = {'EGnet':EGnet}
  
         # Initialize model
         self.model = networks.get(self.cfg.type)(self.full_cfg) # Full cfg
     
-       
         # Initialize losses
         self.define_losses()
     

@@ -7,7 +7,7 @@ trainer:
   cuda_number: '0'
   gpus: 1
   is_logger_enabled: false
-  check_val_every_n_epoch: 30
+  check_val_every_n_epoch: 9
   log_every_n_steps: 25         
   make_checkpoint: True
   checkpoint_path: {}

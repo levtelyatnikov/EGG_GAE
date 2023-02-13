@@ -43,15 +43,7 @@ class PL_DataModule(pl.LightningDataModule):
             model_type=model_type
             )
             
-        # val_dataset = ValDataset(features=data["X_val_deg_freq"],
-        #                          mask_init="mask_mcar_val"),
-        #                          features_clean=data["X_val_deg_freq"]) 
-        
-        # test_dataset = TestDataset(features=data["X_test_deg_freq"], 
-        #                            mask_init="mask_init_test"), 
-        #                            features_clean=data["X_test_clean"])  
-         
-        val_dataset = TestImputeDataset( #ValImputeDataset(
+        val_dataset = TestImputeDataset( 
             split='val',
             cfg=cfg,
             features=data["X_val_deg_freq"], # During validation test values are substituted with statistics
@@ -85,24 +77,7 @@ class PL_DataModule(pl.LightningDataModule):
             model_type=model_type
             )
         
-        # # Valid test split
-        # val_test_dataset = TestImputeDataset(
-        #     split='test',
-        #     cfg=cfg,
-        #     features=data["X_val_deg"],
-        #     labels=data["y_val"], 
-        #     features_clean=data["X_val_clean"],
-        #     features_freq=data["X_val_deg_freq"],
-        #     MASK_init=data["mask_init_val"],
-
-        #     num_idx=data["num_idx"], 
-        #     NumFillWith=data["NumFillWith"],
-        #     cat_idx=data["cat_idx"], 
-        #     CatFillWith=data["CatFillWith"], 
-        #     cat_dims=data["cat_dims"],
-        #     MostFreqClass=data["MostFreqClass"], 
-        #     model_type=model_type)
-        
+       
         # Valid test split
         train_test_dataset = TestImputeDataset(
             split='train_test',
@@ -130,15 +105,7 @@ class PL_DataModule(pl.LightningDataModule):
             pin_memory=False, 
             batch_size=1
             )
-        # This it needed only to provide 
-        self.dl2 = LightningDataset(
-            train_dataset=train_test_dataset,
-            val_dataset=train_test_dataset,
-            test_dataset=test_dataset,
-            num_workers=cfg.num_workers,
-            pin_memory=False, 
-            batch_size=1
-            )
+        
                                    
         self.data = data
         
@@ -154,6 +121,3 @@ class PL_DataModule(pl.LightningDataModule):
     def test_dataloader(self):
         return self.dl.test_dataloader() 
     
-    def train_test_dataloader(self):
-        return self.dl2.train_dataloader()
-

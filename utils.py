@@ -17,7 +17,7 @@ def ModelTraverse(model, SearchModule, func, **args):
                         func(module, **args)
 
 def ExtractModuleNumber(name):
-    m = re.search('DymanicEG_(.+?).', name)
+    m = re.search('EGG_(.+?).', name)
     if not m:
         return None
         

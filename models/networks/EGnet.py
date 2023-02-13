@@ -1,15 +1,14 @@
-from torch import nn
 import torch
-from omegaconf import DictConfig
-from torch_geometric.nn import Sequential, GCNConv
-from collections import OrderedDict
+from torch import nn
 from torch.nn import BatchNorm1d
-from ..modules.gcneg import EGG_module, kEGG_GAE
-from ..modules.nn import NN_module
-from ..modules.dgcnn import DynamicEdgeConv_DGM
-from collections import OrderedDict
 from torch.nn import Sequential as Seq, Linear, ReLU, ELU, LeakyReLU
 from fairseq.modules import LayerNorm
+from torch_geometric.nn import Sequential
+
+from omegaconf import DictConfig
+from collections import OrderedDict
+
+from ..modules.egg import EGG_module, kEGG_GAE
 
 import numpy as np
 class EGnet(nn.Module):
@@ -19,10 +18,7 @@ class EGnet(nn.Module):
         super().__init__()
 
         dynamic_edge_type = {
-                            "GCNConv": GCNConv,
-                            "NN_module": NN_module,                            
                             "EGG_module":EGG_module,
-                            "DynamicEdgeConv_DGM":DynamicEdgeConv_DGM,
                             "kEGG_GAE":kEGG_GAE
                             }
         
@@ -31,7 +27,7 @@ class EGnet(nn.Module):
         self.module = dynamic_edge_type.get(self.cfg.edge_generation_type)
         
         if self.module is None:
-           raise Exception('self.module is None, but have to be DynamicEdgeConv or DynamicEdgeConv_DCGv')
+           raise Exception('self.module is None,')
 
         # Build GCNnetwork
         # In size and out size depends on the dataset 
@@ -40,13 +36,11 @@ class EGnet(nn.Module):
         assert len(self.cfg.GCNEG_head.types) == len(self.cfg.in_channels), f'{len(self.cfg.GCNEG_head.types)} != {len(self.cfg.in_channels)}'
         assert len(self.cfg.GumbleDistFunc.types) == len(self.cfg.in_channels), f'{len(self.cfg.GumbleDistFunc.types)} != {len(self.cfg.in_channels)}'
         
-        if self.cfg.edge_generation_type == 'DynamicEdgeConv':
-            assert len(self.cfg.k_degree) == len(self.cfg.GCNEG_head.types), f'{len(self.cfg.k_degree)} != {len(self.cfg.GCNEG_head.types)}'
-        else:
-            self.cfg.k_degree=list(self.cfg.k_degree)*len(self.cfg.GCNEG_head.types)
+        if self.cfg.edge_generation_type == 'kEGG_GAE':
+            self.cfg.k_degree = list(self.cfg.k_degree) * len(self.cfg.GCNEG_head.types)        
         
         # Mapping head
-        self.cfg.in_channels = [self.cfg.insize] + list(self.cfg.in_channels) # by the construction
+        self.cfg.in_channels = [self.cfg.insize] + list(self.cfg.in_channels)
 
         self.input_bn = BatchNorm1d(self.cfg.insize)
         
@@ -93,11 +87,11 @@ class EGnet(nn.Module):
             names.append(f'EGG_{idx}')
             modules.append((self.module(in_feat=in_feat, out_feat=out_feat, edge_out_feat=edge_out_feat,
                             cfg=self.cfg,
-                            **args), 'x -> x' ))
-            
+                            **args), 'x -> x')
+                          )
             
             names.append(f'act')
-            modules.append( (nn.LeakyReLU()))
+            modules.append( (nn.LeakyReLU()) )
             
         self.egg_modules = Sequential('x', OrderedDict(zip(names, modules)))
         
@@ -113,7 +107,6 @@ class EGnet(nn.Module):
         self.cat_heads = torch.nn.ModuleList([torch.nn.Linear(self.cfg.in_channels[-1], dim).to(f'cuda:{cfg.trainer.cuda_number}') \
                             for dim in self.cfgDataloader.imputation.cat_dims])
         
-       # self.out_relu = ReLU()
 
     def forward(self, x):
         x = self.input_bn(x)
@@ -132,7 +125,3 @@ class EGnet(nn.Module):
             cat_outputs.append(head(emd_norm))
         
         return logits, num_rec, cat_outputs
-
-    def collect_emb(self, module, **args):
-        self.temp.append(module.StatDict['gcn_output'])
-
