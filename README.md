@@ -12,8 +12,11 @@ EGG-GAE: scalable graph neural networks for tabular data imputation[link] (https
 
 ## Run an experiment
 The code is designed to be executed on a single GPU and the GPU must be indicated through the CLI:
-> CUDA_VISIBLE_DEVICES=<GPU_ID> python run.py
 
+```
+
+CUDA_VISIBLE_DEVICES=<GPU_ID> python run.py
+```
 
 ## Logger
 Login to your `wandb` account, running once `wandb login`.
