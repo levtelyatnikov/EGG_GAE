@@ -5,10 +5,33 @@
 EGG-GAE: scalable graph neural networks for tabular data imputation[link] (https://arxiv.org/abs/2210.10446)
 # Navigation
 - [Repository structure](#repository_structure)
+- [Enviroment requirement](#enviroment_requirement)
 - [Run an experiment](#run_an_experiment)
 
+## Enviroment requirement
+This repo is tested with the following enviroment, higher version of torch PyG may also be compatible. 
 
+First let's setup a conda enviroment
+```
+conda create -n "egg_gae" python=3.9
+conda activate egg_gae
+```
+Then install pytorch and PyG packages with specific version.
+```
+conda install pytorch==1.10.0 torchvision==0.11.1 cudatoolkit=10.0 -c pytorch
+pip install torch-scatter==2.0.9 -f https://pytorch-geometric.com/whl/torch-1.10.0+cu100.html
+pip install torch-sparse==0.6.12 -f https://pytorch-geometric.com/whl/torch-1.10.0+cu100.html
+pip install torch-cluster==1.5.9 -f https://pytorch-geometric.com/whl/torch-1.10.0+cu100.html
+pip install torch-geometric==2.0.4 -f https://pytorch-geometric.com/whl/torch-1.10.0+cu100.html
+```
+Finally, install some relative packages
 
+```
+pip install ipdb
+pip install tqdm
+pip install scipy
+pip install matplotlib
+```
 
 ## Run an experiment
 The code is designed to be executed on a single GPU and the GPU must be indicated through the CLI:
