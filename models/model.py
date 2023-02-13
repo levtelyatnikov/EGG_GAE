@@ -66,8 +66,6 @@ class Network(nn.Module):
         self.crossentropy = torch.nn.CrossEntropyLoss()
         self.mse = torch.nn.MSELoss()
 
-      
-
     def forward(self, batch):
         logits = self.model(batch)
         return logits
@@ -104,7 +102,6 @@ class Network(nn.Module):
         if self.cfg.prototypes.k > 0:
             logits, y, num_rec = logits[:self.n_], y[:self.n_], num_rec[:self.n_]
             cat_outputs = [cat[:self.n_] for cat in cat_outputs]
-            
 
 
         assert logits.shape[0] == y.shape[0]

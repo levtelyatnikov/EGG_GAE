@@ -7,7 +7,7 @@ edge_generation_type: EGG_module #EGG_module, DynamicEdgeConv_DGM, NN_module, EG
 input_bn: True                        # True/False
 secondGCN: False  # True/False
 prototypes:
-  k: 0
+  k: 10
 
 setup_dataset: True
 GCNEG_head:
