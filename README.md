@@ -2,7 +2,7 @@
 
 ---
 
-EGG-GAE: scalable graph neural networks for tabular data imputation[link] (https://arxiv.org/abs/2210.10446)
+EGG-GAE: scalable graph neural networks for tabular data imputation[link](https://arxiv.org/abs/2210.10446)
 # Navigation
 - [Repository structure](#repository_structure)
 - [Enviroment requirement](#enviroment_requirement)
