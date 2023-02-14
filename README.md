@@ -12,10 +12,15 @@
 This repo is tested with the following enviroment, higher version of torch PyG may also be compatible. 
 
 First let's setup a conda enviroment
+
 ```
-conda create -n "egg_gae" python=3.9
+bash setup_env.sh
+```
+
+```
 conda activate egg_gae
 ```
+
 Then install pytorch and PyG packages with specific version.
 ```
 conda install pytorch==1.10.0 torchvision==0.11.1 cudatoolkit=10.0 -c pytorch
@@ -27,12 +32,22 @@ pip install torch-geometric==2.0.4 -f https://pytorch-geometric.com/whl/torch-1.
 Finally, install some relative packages
 
 ```
+conda install -c conda-forge hydra-core==1.1
+conda install -c conda-forge pytorch-lightning==1.5.1
+pip install setuptools==59.5.0
+conda install -c conda-forge fairseq
+```
+
+```
+pip install hydra==1.1.1
 pip install ipdb
 pip install tqdm
 pip install scipy
 pip install matplotlib
 ```
 
+## Configs
+Please refer to the `configs/defaults.yaml` file for more details on the available configuration options.
 
 ## Run an experiment
 The code is designed to be executed on a single GPU and the GPU must be indicated through the CLI:
@@ -41,18 +56,11 @@ The code is designed to be executed on a single GPU and the GPU must be indicate
 CUDA_VISIBLE_DEVICES=<GPU_ID> python run.py
 ```
 
-### Configs
-
-Please refer to the `configs/defaults.yaml` file for more details on the available configuration options.
-
-
-Additional
+## Additional Configs
 To understand the structure see [hydra](https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/).
 dataset.yaml and model.yaml consist of dataset_type and model_type keys respectively. Through keys values pl pipline is configured.
 
 Configure all parameters through .yaml file with integrated [wandb](https://docs.wandb.ai/)
-
-
 
 ## Adding Tabular Dataset
 
