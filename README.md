@@ -56,12 +56,6 @@ The code is designed to be executed on a single GPU and the GPU must be indicate
 CUDA_VISIBLE_DEVICES=<GPU_ID> python run.py
 ```
 
-## Additional Configs
-To understand the structure see [hydra](https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/).
-dataset.yaml and model.yaml consist of dataset_type and model_type keys respectively. Through keys values pl pipline is configured.
-
-Configure all parameters through .yaml file with integrated [wandb](https://docs.wandb.ai/)
-
 ## Adding Tabular Dataset
 
 To add a tabular dataset, modify `data_prep/upload.py` and update the `loader` and `upload_data` function. 
@@ -82,7 +76,11 @@ Read more in the [docs](https://docs.wandb.ai/). Particularly useful the [`log` 
 `wandb` with the logger you prefer (you can even build your own).
  More about Lightning loggers [here](https://pytorch-lightning.readthedocs.io/en/latest/extensions/logging.html).
 
+## Additional Configs
+To understand the structure see [hydra](https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/).
+dataset.yaml and model.yaml consist of dataset_type and model_type keys respectively. Through keys values pl pipline is configured.
 
+Configure all parameters through .yaml file with integrated [wandb](https://docs.wandb.ai/)
 
 ## Repository structure
 ```
