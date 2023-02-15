@@ -5,10 +5,10 @@
 [EGG-GAE: scalable graph neural networks for tabular data imputation](https://arxiv.org/abs/2210.10446)
 # Navigation
 - [Repository structure](#repository_structure)
-- [Enviroment requirement](#enviroment_requirement)
+- [Setup enviroment](#setup_environment)
 - [Run an experiment](#run_an_experiment)
 
-## Enviroment requirement
+## Setup environment
 This repo is tested with the following enviroment, higher version of torch PyG may also be compatible. 
 
 First let's setup a conda enviroment
