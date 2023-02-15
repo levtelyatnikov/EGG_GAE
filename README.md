@@ -21,31 +21,6 @@ bash setup_env.sh
 conda activate egg_gae
 ```
 
-Then install pytorch and PyG packages with specific version.
-```
-conda install pytorch==1.10.0 torchvision==0.11.1 cudatoolkit=10.0 -c pytorch
-pip install torch-scatter==2.0.9 -f https://pytorch-geometric.com/whl/torch-1.10.0+cu100.html
-pip install torch-sparse==0.6.12 -f https://pytorch-geometric.com/whl/torch-1.10.0+cu100.html
-pip install torch-cluster==1.5.9 -f https://pytorch-geometric.com/whl/torch-1.10.0+cu100.html
-pip install torch-geometric==2.0.4 -f https://pytorch-geometric.com/whl/torch-1.10.0+cu100.html
-```
-Finally, install some relative packages
-
-```
-conda install -c conda-forge hydra-core==1.1
-conda install -c conda-forge pytorch-lightning==1.5.1
-pip install setuptools==59.5.0
-conda install -c conda-forge fairseq
-```
-
-```
-pip install hydra==1.1.1
-pip install ipdb
-pip install tqdm
-pip install scipy
-pip install matplotlib
-```
-
 ## Configs
 Please refer to the `configs/defaults.yaml` file for more details on the available configuration options.
 
