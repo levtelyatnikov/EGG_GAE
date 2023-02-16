@@ -14,11 +14,15 @@ This repo is tested with the following enviroment, higher version of torch PyG m
 First let's setup a conda enviroment
 
 ```
-bash setup_env.sh
-```
-
-```
-conda activate egg_gae
+conda create --name egg_exp --yes
+conda activate egg_exp
+conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia --yes
+pip install pytorch-lightning==1.9
+pip install torchfunc==0.2.0 
+pip install wandb==0.13.9
+conda install pyg -c pyg --yes
+conda install -c conda-forge graph-tool gudhi --yes
+conda install ipykernel ipywidgets networkx
 ```
 
 ## Configs
