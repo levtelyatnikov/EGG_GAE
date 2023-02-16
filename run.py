@@ -59,12 +59,13 @@ def main(cfg: DictConfig):
     cfg.wadb.logger_name = f'{cfg.dataloader.dataset_name}_{cfg.model.edge_generation_type}_k(noSKIPCON)'
     
     # # # Configure weight and biases 
-    logger = pl_loggers.WandbLogger(
-        project=cfg.wadb.logger_project_name,
-        name=cfg.wadb.logger_name if cfg.wadb.logger_name != 'None' else None, 
-        entity=cfg.wadb.entity,
-        
-        )
+    if cfg.trainer.is_logger_enabled == True:
+        logger = pl_loggers.WandbLogger(
+            project=cfg.wadb.logger_project_name,
+            name=cfg.wadb.logger_name if cfg.wadb.logger_name != 'None' else None, 
+            entity=cfg.wadb.entity,
+            
+            )
 
     # --- Callbacks ---
     checkpoint_callback = ModelCheckpoint(
@@ -106,7 +107,7 @@ def main(cfg: DictConfig):
     trainer.fit(model, datamodule)
 
     
-    trainer.test(model=model, test_dataloaders=datamodule.test_dataloader(), ckpt_path="best")
+    trainer.test(model=model, dataloaders=datamodule.test_dataloader(), ckpt_path="best")
     
     print('Training is done!')
     

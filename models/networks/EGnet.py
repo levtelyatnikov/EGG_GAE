@@ -96,7 +96,7 @@ class EGnet(nn.Module):
         self.egg_modules = Sequential('x', OrderedDict(zip(names, modules)))
         
         # Classification head
-        self.head_norm = LayerNorm(self.cfg.in_channels[-1], export=False)
+        self.head_norm = LayerNorm(self.cfg.in_channels[-1])
         
         self.classification_head = torch.nn.Linear(self.cfg.in_channels[-1], self.cfg.outsize)
         
