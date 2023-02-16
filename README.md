@@ -23,6 +23,7 @@ pip install wandb==0.13.9
 conda install pyg -c pyg --yes
 conda install -c conda-forge graph-tool gudhi --yes
 conda install ipykernel ipywidgets networkx
+conda install -c conda-forge hydra-core==1.1.0
 ```
 
 ## Configs
