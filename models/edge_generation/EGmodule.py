@@ -1,7 +1,7 @@
 from torch import nn
 import torch
 from torch import Tensor
-from .bernulyEG import GumbelSigmoid, GumbelSigmoid_k
+from .sampler import GumbelSigmoid, GumbelSigmoid_k
 
 
 class EdgeGenerationModule(nn.Module):

@@ -2,7 +2,7 @@ from torch import nn
 from torch_geometric.nn import GCNConv, GATConv, ARMAConv, SGConv
 from torch import Tensor
 from ..edge_generation.EGmodule import EdgeGenerationModule
-from fairseq.modules import LayerNorm
+from torch.nn import LayerNorm
 from torch_geometric.nn import MessagePassing
 from torch.nn import Sequential as Seq, Linear, ReLU
 from torch_geometric.typing import OptTensor

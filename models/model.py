@@ -6,7 +6,6 @@ import numpy as np
 
 from .networks.EGnet import EGnet
 
-
 from models.edge_generation.EGmodule import EdgeGenerationModule
 
 from utils import ModelTraverse 

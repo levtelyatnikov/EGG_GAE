@@ -2,7 +2,7 @@ import torch
 from torch import nn
 from torch.nn import BatchNorm1d
 from torch.nn import Sequential as Seq, Linear, ReLU, ELU, LeakyReLU
-from fairseq.modules import LayerNorm
+from torch.nn import LayerNorm
 from torch_geometric.nn import Sequential
 
 from omegaconf import DictConfig
